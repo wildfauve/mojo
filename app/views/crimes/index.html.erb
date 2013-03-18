@@ -1,0 +1,33 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+		  <th>offence</th>
+		  <th>gender</th>
+		  <th>ethnicity</th>
+		  <th>court_location</th>
+		  <th>age_group</th>
+		  <th>charge_outcome</th>
+		  <th>year</th>
+	    </tr>
+  </thead>
+  <tbody>
+	<% @crimes.each do |crime| %>	
+      <tr>
+        <td><%= link_to crime.offence, crime_path(crime) %></td>
+        <td><%= crime.gender %></td>
+        <td><%= crime.ethnicity %></td>
+        <td><%= crime.court_location %></td>
+        <td><%= crime.age_group %></td>
+        <td><%= crime.charge_outcome %></td>
+        <td><%= crime.year %></td>
+        <td>
+          <%= link_to 'Edit', edit_crime_path(crime), :class => 'btn btn-mini' %>
+          <%= link_to 'Show', crime_path(crime), :class => 'btn btn-mini' %>
+          <%= link_to 'Destroy', crime_path(crime), :method => :delete, :confirm => 'Are you sure?', :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="pagination"><%= paginate @crimes %></div>
