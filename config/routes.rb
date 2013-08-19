@@ -17,7 +17,8 @@ Mojo::Application.routes.draw do
       
   end
   
-  resources :crimes, :dashboards, :only => :index
+  resources :crimes
+  resources :dashboards, :only => :index
   
   resources :welcome, :only => :index
 

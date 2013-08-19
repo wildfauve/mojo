@@ -11,7 +11,7 @@ class Dimension
   end
   
   def update_dim
-    y = Year.find_and_store(@crime).inc
+    y = Year.find_store_inc(@crime)
   end  
 
   
