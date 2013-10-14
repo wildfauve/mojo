@@ -8,12 +8,12 @@ class Year
 # @dim => {:count => n, :gender => {:male => n}, :offense => {:off1 => n, :off2 => n}, :eth => {}, :age_g => {}}
   
   def self.find_and_store(crime)
-    return self.find(crime.year).store_crime(crime)
+    return self.find(crime.year).store_crime(crime).inc
   end
   
   def self.find(year)
     key = "year-#{year}"
-    dim = $redis.get(key)
+      dim = $redis.get(key)
     dim.nil? ? dim_hash = {} : dim_hash = JSON.parse(dim)
     Rails.logger.info(">>>Year#Find: #{key} #{dim_hash["count"]}")    
     return Year.new(year, key, dim_hash)    
